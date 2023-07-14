@@ -10,6 +10,16 @@ We would like to thank the following contributors for this latest release
 
 {{changelogContributors}}
 
+~~~~~
+
+{{releaseNotesUrl}}
+
+----
+{{changelog}}
+----
+
+Please report any issues at {{projectLinkBugTracker}}
+
 Cordially,
 Our Team
 
