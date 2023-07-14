@@ -1,0 +1,65 @@
+project:
+    name: jreleaser-demo-yml
+    version: 0.0.1
+    description: JReleaser Demo
+    longDescription: JReleaser Demo meant to show what the application provides
+    authors:
+        - Daniel Hinojosa
+    license: Apache-2
+    java:
+        groupId: com.evolutionnext
+        version: "17"
+    extraProperties:
+        inceptionYear: "2023"
+    links:
+        homepage: "https://github.com/dhinojosa/jreleaser-demo-yml"
+        documentation: "https://github.com/dhinojosa/jreleaser-demo-yml/README.md"
+    stereotype: CLI
+
+
+release:
+    github:
+        owner: dhinojosa
+
+announce:
+    smtp:
+        active: ALWAYS
+        transport: SMTP
+        mimeType: TEXT
+        port: 2525
+        auth: true
+        host: mail.kattare.com
+        username: dhinojosa
+        from: admin@evolutionnext.com
+        to: dhinojosa@evolutionnext.com
+        subject: New Release of JReleaser Topic Available
+        messageTemplate: src/jreleaser/templates/mail.tpl
+        properties:
+            'mail.smtp.starttls.enable': "true"
+
+assemble:
+    archive:
+        jreleaser-demo-bin:
+            active: ALWAYS
+            archiveName: 'jreleaser-demo-bin-{{projectVersion}}'
+            distributionType: JAVA_BINARY
+            fileSets:
+                -   input: 'target/classes'
+
+download:
+    http:
+        countries:
+            active: ALWAYS
+            connectTimeout: 20
+            readTimeout: 60
+            assets:
+                -   input: 'https://gist.github.com/sohailalam2/816e05eb6e68d030bbe52272785896c4/archive/d41648e6f4c04f8e77cd0598ae255ffb90c83aa4.zip'
+                    output: 'countries.zip'
+                    unpack:
+                        enabled: false
+
+distributions:
+    jreleaser-demo-bin:
+        type: JAVA_BINARY
+        artifacts:
+            -   path: out/jreleaser/assemble/jreleaser-demo-bin/archive/jreleaser-demo-bin-{{projectVersion}}.zip
