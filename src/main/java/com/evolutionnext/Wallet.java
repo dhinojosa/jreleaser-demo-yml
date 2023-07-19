@@ -19,6 +19,7 @@ public class Wallet {
         return balance == 0;
     }
 
+    //**Careful**/
     public void addFunds(int amount) {
         logger.debug("Adding {} to wallet {}", amount, uuid);
         balance += amount;

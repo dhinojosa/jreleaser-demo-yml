@@ -1,6 +1,6 @@
 project:
     name: jreleaser-demo-yml
-    version: 0.0.3
+    version: 0.0.8
     description: JReleaser Demo
     longDescription: JReleaser Demo meant to show what the application provides
     authors:
